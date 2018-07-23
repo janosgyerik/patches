@@ -4,17 +4,11 @@
 
 set -euo pipefail
 
-source scripts/property_utils.sh
+. "$(dirname "${BASH_SOURCE[0]}")"/functions.sh
 
 SQ_HOME=$1
 
-if [ "${SONARQUBE_DEV+x}" ]; then
-    DEV=$SONARQUBE_DEV
-else
-    DEV=~/DEV
-fi
+set_dev
+PLUGIN_DIR=$DEV/sonar-enterprise/plugins/sonar-xoo-plugin/build/libs
 
-PLUGIN_PATH=$DEV/sonarqube/plugins/sonar-xoo-plugin/target/sonar-xoo-plugin-7.1-SNAPSHOT.jar
-EXT_DIR=$SQ_HOME/extensions/plugins
-cp -v "$PLUGIN_PATH" "$EXT_DIR"/
-
+replace_plugin "$SQ_HOME" "$PLUGIN_DIR" sonar-xoo-plugin
