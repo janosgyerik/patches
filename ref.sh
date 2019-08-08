@@ -7,7 +7,7 @@ set -euo pipefail
 
 SQ_HOME=$1
 
-ref=tmp/sc-with-github
+ref=tmp/refs/ptfs
 cp -v "$ref"/data/*.db "$SQ_HOME/data/"
-cp -v "$ref"/extensions/plugins/*.jar "$SQ_HOME/extensions/plugins/"
-cp -v "$ref"/conf/sonar.properties "$SQ_HOME/conf/"
+cp -v "$ref"/extensions/plugins/*.jar "$SQ_HOME/extensions/plugins/" || :
+cp -v "$ref"/conf/sonar.properties "$SQ_HOME/conf/" || :
