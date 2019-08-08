@@ -5,13 +5,20 @@ source $HOME/config/github/alm1.sh
 
 SQ_HOME=$1
 
-set_property sonar.sonarcloud.enabled "true" "$SQ_HOME/conf/sonar.properties"
-set_property sonar.alm.github.app.id "$app_id" "$SQ_HOME/conf/sonar.properties"
-set_property sonar.alm.github.app.name "$app_name" "$SQ_HOME/conf/sonar.properties"
-set_property sonar.alm.github.app.webhookSecret "$app_webhookSecret" "$SQ_HOME/conf/sonar.properties"
-set_property sonar.alm.github.app.privateKey "$app_privateKey" "$SQ_HOME/conf/sonar.properties"
+setp() {
+    local key=$1
+    local value=$2
+    set_property "$key" "$value" "$SQ_HOME/conf/sonar.properties"
+}
 
-# https://docs.sonarqube.org/display/PLUG/GitHub+Authentication+Plugin
-#set_property sonar.auth.github.enabled "true" "$SQ_HOME/conf/sonar.properties"
-#set_property sonar.auth.github.clientId "$clientId" "$SQ_HOME/conf/sonar.properties"
-#set_property sonar.auth.github.clientSecret "$clientSecret" "$SQ_HOME/conf/sonar.properties"
+setp sonar.pullrequest.github.endpoint "https://api.github.com"
+setp sonar.core.serverBaseURL "https://janos.eu.ngrok.io"
+
+setp sonar.sonarcloud.enabled "true"
+setp sonar.alm.github.app.id "$app_id"
+setp sonar.alm.github.app.name "$app_name"
+setp sonar.alm.github.app.webhookSecret "$app_webhookSecret"
+setp sonar.alm.github.app.privateKeyContent.secured "$app_privateKeyContent"
+
+setp sonar.alm.github.app.clientId "$clientId"
+setp sonar.alm.github.app.clientSecret "$clientSecret"
