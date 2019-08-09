@@ -17,3 +17,7 @@ setp "$prop_name" "$prop_value"
 prop_name=sonar.cloud.autoscan.authSecret
 prop_value=$SC_AUTOSCAN_CORE_SECRET
 setp "$prop_name" "$prop_value"
+
+prop_name=sonar.cloud.events.authSecret
+prop_value=$SC_SHARED_EVENTS_CORE_SECRET
+setp "$prop_name" "$prop_value"
