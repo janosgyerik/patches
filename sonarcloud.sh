@@ -10,14 +10,10 @@ setp() {
     set_property "$name" "$value" "$SQ_HOME/conf/sonar.properties"
 }
 
-prop_name=sonar.cloud.shared.EventsCoreQueueUri
-prop_value=https://sqs.$AWS_REGION.amazonaws.com/$AWS_NNN/Core-Events-$ENV_NAME-Q
-setp "$prop_name" "$prop_value"
+setp sonar.cloud.autoscan.authSecret "$SC_AUTOSCAN_CORE_AUTH_SECRET"
+setp sonar.cloud.eventsCoreQueue.authSecret "$SC_CORE_EVENTS_CORE_AUTH_SECRET"
+setp sonar.cloud.analysisStatusService.url "$X_GET_STATUS_URL"
+setp sonar.cloud.analysisStatusService.authSecret "$SC_ANALYSIS_STATUS_GET_STATUS_AUTH_SECRET"
 
-prop_name=sonar.cloud.autoscan.authSecret
-prop_value=$SC_AUTOSCAN_CORE_SECRET
-setp "$prop_name" "$prop_value"
-
-prop_name=sonar.cloud.events.authSecret
-prop_value=$SC_SHARED_EVENTS_CORE_SECRET
-setp "$prop_name" "$prop_value"
+setp sonar.cloud.shared.eventsTopic.region eu-west-1
+setp sonar.cloud.shared.eventsTopic.arn "$X_EVENTS_TOPIC"
