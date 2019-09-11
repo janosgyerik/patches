@@ -4,6 +4,7 @@ source scripts/property_utils.sh
 source $HOME/config/github/alm1.sh
 
 SQ_HOME=$1
+CONF=$SQ_HOME/conf/sonar.properties
 
 setp() {
     local key=$1
@@ -20,5 +21,5 @@ setp sonar.alm.github.app.name "$app_name"
 setp sonar.alm.github.app.webhookSecret "$app_webhookSecret"
 setp sonar.alm.github.app.privateKeyContent.secured "$app_privateKeyContent"
 
-setp sonar.alm.github.app.clientId "$clientId"
-setp sonar.alm.github.app.clientSecret "$clientSecret"
+setp sonar.alm.github.app.clientId "$app_clientId"
+setp sonar.alm.github.app.clientSecret "$app_clientSecret"
