@@ -1,7 +1,7 @@
 set -euo pipefail
 
 source scripts/property_utils.sh
-source $HOME/config/github/alm1.sh
+source "$HOME/config/github/alm1.sh"
 
 SQ_HOME=$1
 CONF=$SQ_HOME/conf/sonar.properties
